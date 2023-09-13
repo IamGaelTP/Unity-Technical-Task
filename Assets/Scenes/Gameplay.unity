@@ -792,6 +792,7 @@ GameObject:
   - component: {fileID: 517502096}
   - component: {fileID: 517502098}
   - component: {fileID: 517502097}
+  - component: {fileID: 517502099}
   m_Layer: 0
   m_Name: GroundUp
   m_TagString: Untagged
@@ -1733,6 +1734,22 @@ Tilemap:
     e31: 0
     e32: 0
     e33: 1
+--- !u!19719996 &517502099
+TilemapCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 517502095}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_MaximumTileChangeCount: 1000
+  m_ExtrusionFactor: 0
 --- !u!1 &519420028
 GameObject:
   m_ObjectHideFlags: 0
@@ -1828,6 +1845,7 @@ GameObject:
   - component: {fileID: 535408363}
   - component: {fileID: 535408365}
   - component: {fileID: 535408364}
+  - component: {fileID: 535408366}
   m_Layer: 0
   m_Name: Collisionable
   m_TagString: Untagged
@@ -2269,6 +2287,22 @@ Tilemap:
     e31: 0
     e32: 0
     e33: 1
+--- !u!19719996 &535408366
+TilemapCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 535408362}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_MaximumTileChangeCount: 1000
+  m_ExtrusionFactor: 0
 --- !u!1 &705055874
 GameObject:
   m_ObjectHideFlags: 0
@@ -2323,7 +2357,7 @@ GameObject:
   m_Component:
   - component: {fileID: 962298804}
   - component: {fileID: 962298806}
-  - component: {fileID: 962298805}
+  - component: {fileID: 962298807}
   m_Layer: 0
   m_Name: Sprite
   m_TagString: Untagged
@@ -2346,19 +2380,6 @@ Transform:
   m_Father: {fileID: 1038628222}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!65 &962298805
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 962298803}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 0.64, y: 0.64, z: 0.2}
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!212 &962298806
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -2411,6 +2432,32 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!61 &962298807
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 962298803}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: -0.002841413, y: -0.06534947}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 0.64, y: 0.64}
+    newSize: {x: 0.64, y: 0.64}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 0.23653802, y: 0.37291944}
+  m_EdgeRadius: 0
 --- !u!1 &1038628221
 GameObject:
   m_ObjectHideFlags: 0
@@ -2471,6 +2518,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   initialState: {fileID: 11400000, guid: 9144800a1506f3045a4cfd7f7384bee9, type: 2}
+  previewCurrentState: {fileID: 0}
 --- !u!50 &1038628226
 Rigidbody2D:
   serializedVersion: 4
@@ -2491,7 +2539,7 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 0
+  m_Constraints: 4
 --- !u!1 &1337647007
 GameObject:
   m_ObjectHideFlags: 0
@@ -3851,6 +3899,7 @@ GameObject:
   - component: {fileID: 1690118053}
   - component: {fileID: 1690118055}
   - component: {fileID: 1690118054}
+  - component: {fileID: 1690118056}
   m_Layer: 0
   m_Name: Colisionable2
   m_TagString: Untagged
@@ -4036,6 +4085,22 @@ Tilemap:
     e31: 0
     e32: 0
     e33: 1
+--- !u!19719996 &1690118056
+TilemapCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1690118052}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_MaximumTileChangeCount: 1000
+  m_ExtrusionFactor: 0
 --- !u!1 &1931454714
 GameObject:
   m_ObjectHideFlags: 0
