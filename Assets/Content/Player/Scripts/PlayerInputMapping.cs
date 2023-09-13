@@ -53,6 +53,24 @@ public partial class @PlayerInputMapping: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""PerformAction"",
+                    ""type"": ""Button"",
+                    ""id"": ""4b5370b8-c6c8-4ac9-8f46-82a6d813eaba"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""CancelAction"",
+                    ""type"": ""Button"",
+                    ""id"": ""08e6261f-adb1-4c1a-a9c5-600568261a4f"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -132,6 +150,28 @@ public partial class @PlayerInputMapping: IInputActionCollection2, IDisposable
                     ""action"": ""Movement"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""4eef986d-e3ce-4724-abd4-9f38be4568b0"",
+                    ""path"": ""<Mouse>/leftButton"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""PerformAction"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""007ee855-e0c4-4a32-8296-236cea6714a4"",
+                    ""path"": ""<Mouse>/rightButton"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""CancelAction"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -143,6 +183,8 @@ public partial class @PlayerInputMapping: IInputActionCollection2, IDisposable
         m_PlayerInput_Movement = m_PlayerInput.FindAction("Movement", throwIfNotFound: true);
         m_PlayerInput_PointerPosition = m_PlayerInput.FindAction("PointerPosition", throwIfNotFound: true);
         m_PlayerInput_Interact = m_PlayerInput.FindAction("Interact", throwIfNotFound: true);
+        m_PlayerInput_PerformAction = m_PlayerInput.FindAction("PerformAction", throwIfNotFound: true);
+        m_PlayerInput_CancelAction = m_PlayerInput.FindAction("CancelAction", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -207,6 +249,8 @@ public partial class @PlayerInputMapping: IInputActionCollection2, IDisposable
     private readonly InputAction m_PlayerInput_Movement;
     private readonly InputAction m_PlayerInput_PointerPosition;
     private readonly InputAction m_PlayerInput_Interact;
+    private readonly InputAction m_PlayerInput_PerformAction;
+    private readonly InputAction m_PlayerInput_CancelAction;
     public struct PlayerInputActions
     {
         private @PlayerInputMapping m_Wrapper;
@@ -214,6 +258,8 @@ public partial class @PlayerInputMapping: IInputActionCollection2, IDisposable
         public InputAction @Movement => m_Wrapper.m_PlayerInput_Movement;
         public InputAction @PointerPosition => m_Wrapper.m_PlayerInput_PointerPosition;
         public InputAction @Interact => m_Wrapper.m_PlayerInput_Interact;
+        public InputAction @PerformAction => m_Wrapper.m_PlayerInput_PerformAction;
+        public InputAction @CancelAction => m_Wrapper.m_PlayerInput_CancelAction;
         public InputActionMap Get() { return m_Wrapper.m_PlayerInput; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -232,6 +278,12 @@ public partial class @PlayerInputMapping: IInputActionCollection2, IDisposable
             @Interact.started += instance.OnInteract;
             @Interact.performed += instance.OnInteract;
             @Interact.canceled += instance.OnInteract;
+            @PerformAction.started += instance.OnPerformAction;
+            @PerformAction.performed += instance.OnPerformAction;
+            @PerformAction.canceled += instance.OnPerformAction;
+            @CancelAction.started += instance.OnCancelAction;
+            @CancelAction.performed += instance.OnCancelAction;
+            @CancelAction.canceled += instance.OnCancelAction;
         }
 
         private void UnregisterCallbacks(IPlayerInputActions instance)
@@ -245,6 +297,12 @@ public partial class @PlayerInputMapping: IInputActionCollection2, IDisposable
             @Interact.started -= instance.OnInteract;
             @Interact.performed -= instance.OnInteract;
             @Interact.canceled -= instance.OnInteract;
+            @PerformAction.started -= instance.OnPerformAction;
+            @PerformAction.performed -= instance.OnPerformAction;
+            @PerformAction.canceled -= instance.OnPerformAction;
+            @CancelAction.started -= instance.OnCancelAction;
+            @CancelAction.performed -= instance.OnCancelAction;
+            @CancelAction.canceled -= instance.OnCancelAction;
         }
 
         public void RemoveCallbacks(IPlayerInputActions instance)
@@ -267,5 +325,7 @@ public partial class @PlayerInputMapping: IInputActionCollection2, IDisposable
         void OnMovement(InputAction.CallbackContext context);
         void OnPointerPosition(InputAction.CallbackContext context);
         void OnInteract(InputAction.CallbackContext context);
+        void OnPerformAction(InputAction.CallbackContext context);
+        void OnCancelAction(InputAction.CallbackContext context);
     }
 }

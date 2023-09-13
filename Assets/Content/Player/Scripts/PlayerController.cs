@@ -3,19 +3,25 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
+public enum eMouseButton
+{
+    LEFT,
+    RIGHT
+}
+
 [RequireComponent(typeof(PlayerStateMachine), typeof(Rigidbody2D))]
 public class PlayerController : MonoBehaviour
 {
     public PlayerInputMapping input;
 
-    public bool IS_MOVING => isMoving;
-    private bool isMoving = false;
+    public bool isMoving { get; private set; }
 
-    public Vector2 MOVE_DIRECTION => moveDirection;
-    private Vector2 moveDirection;
+    public Vector2 moveDirection { get; private set; }
 
-    public Vector2 POINTER_DIRECTION => pointerDirection;
-    private Vector2 pointerDirection;
+    public Vector2 pointerDirection { get; private set; }
+
+    public bool isLeftMouseButtonPressed { get; private set; }
+    public bool isRightMouseButtonPressed { get; private set; }
 
 
     private void Awake()
@@ -23,20 +29,26 @@ public class PlayerController : MonoBehaviour
         input = new PlayerInputMapping();
     }
 
-    private void Start()
+    void OnEnable()
     {
-        input.PlayerInput.Movement.performed += EnableMovement;
+        input.PlayerInput.Enable(); input.PlayerInput.Movement.performed += EnableMovement;
         input.PlayerInput.Movement.canceled += DisableMovement;
 
         input.PlayerInput.PointerPosition.performed += GetPointerPosition;
-    }
-
-    void OnEnable()
-    {
-        input.PlayerInput.Enable();
+        input.PlayerInput.PerformAction.performed += OnPerformActionPerformed;
+        input.PlayerInput.PerformAction.canceled += OnPerformActionCancelled;
+        input.PlayerInput.CancelAction.performed += OnCancelActionPerformed;
+        input.PlayerInput.CancelAction.canceled += OnCancelActionCancelled;
     }
     void OnDisable()
     {
+        input.PlayerInput.Movement.performed -= EnableMovement;
+        input.PlayerInput.Movement.canceled -= DisableMovement;
+        input.PlayerInput.PointerPosition.performed -= GetPointerPosition;
+        input.PlayerInput.PerformAction.performed -= OnPerformActionPerformed;
+        input.PlayerInput.PerformAction.canceled -= OnPerformActionCancelled;
+        input.PlayerInput.CancelAction.performed -= OnCancelActionPerformed;
+        input.PlayerInput.CancelAction.canceled -= OnCancelActionCancelled;
         input.PlayerInput.Disable();
     }
 
@@ -59,9 +71,25 @@ public class PlayerController : MonoBehaviour
         pointerDirection = Camera.main.ScreenToWorldPoint(mousePos);
     }
 
-    private void OnDestroy()
+    private void OnPerformActionPerformed(InputAction.CallbackContext context)
     {
-        input.PlayerInput.Movement.performed -= EnableMovement;
-        input.PlayerInput.Movement.canceled -= DisableMovement;
+        isLeftMouseButtonPressed = true;
+    }
+    private void OnCancelActionPerformed(InputAction.CallbackContext context)
+    {
+        isRightMouseButtonPressed = true;
+    }
+    private void OnPerformActionCancelled(InputAction.CallbackContext context)
+    {
+        isLeftMouseButtonPressed = false;
+    }
+    private void OnCancelActionCancelled(InputAction.CallbackContext context)
+    {
+        isRightMouseButtonPressed = false;
+    }
+
+    public bool IsMouseButtonPressed(eMouseButton button)
+    {
+        return button == eMouseButton.LEFT ? isLeftMouseButtonPressed : isRightMouseButtonPressed;
     }
 }

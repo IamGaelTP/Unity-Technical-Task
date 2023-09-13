@@ -15,7 +15,7 @@ public class PlayerWalk : PlayerAction
     public override void Execute(PlayerStateMachine stateMachine)
     {
         Rigidbody2D rb = stateMachine.GetComponent<Rigidbody2D>();
-        Vector2 direction = stateMachine.GetComponent<PlayerController>().MOVE_DIRECTION;
+        Vector2 direction = stateMachine.GetComponent<PlayerController>().moveDirection;
         if (direction.magnitude > 0)
         {
             rb.MovePosition(rb.position + direction * speed * Time.fixedDeltaTime);

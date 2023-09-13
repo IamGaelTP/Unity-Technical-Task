@@ -1,5 +1,5 @@
 {
-    "name": "Player Input",
+    "name": "PlayerInputMapping",
     "maps": [
         {
             "name": "PlayerInput",
@@ -27,6 +27,24 @@
                     "name": "Interact",
                     "type": "Button",
                     "id": "102d335f-7965-436c-98a9-0dd796ad4670",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "PerformAction",
+                    "type": "Button",
+                    "id": "4b5370b8-c6c8-4ac9-8f46-82a6d813eaba",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "CancelAction",
+                    "type": "Button",
+                    "id": "08e6261f-adb1-4c1a-a9c5-600568261a4f",
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": "",
@@ -110,6 +128,28 @@
                     "action": "Movement",
                     "isComposite": false,
                     "isPartOfComposite": true
+                },
+                {
+                    "name": "",
+                    "id": "4eef986d-e3ce-4724-abd4-9f38be4568b0",
+                    "path": "<Mouse>/leftButton",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "PerformAction",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "007ee855-e0c4-4a32-8296-236cea6714a4",
+                    "path": "<Mouse>/rightButton",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "CancelAction",
+                    "isComposite": false,
+                    "isPartOfComposite": false
                 }
             ]
         }

@@ -11,7 +11,7 @@ public class CheckIsMoving : PlayerDecision
     {
         if(canMove.Decide(stateMachine))
         {
-            return stateMachine.GetComponent<PlayerController>().IS_MOVING ? true : false;
+            return stateMachine.GetComponent<PlayerController>().isMoving ? true : false;
         }
         else
         {
