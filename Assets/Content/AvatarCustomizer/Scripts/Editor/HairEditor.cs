@@ -1,13 +1,13 @@
 using UnityEditor;
 using UnityEngine;
 
-[CustomEditor(typeof(BaseCloth))]
-public class ClotheEditor : Editor
+[CustomEditor(typeof(BaseHair))]
+public class HairEditor : Editor
 {
     /// <summary>
     /// The reference of our Avatar Base Element.
     /// </summary>
-    public BaseCloth baseClothe;
+    public BaseHair baseElement;
 
     /// <summary>
     /// Make it available by default
@@ -15,7 +15,7 @@ public class ClotheEditor : Editor
     /// 
     private void OnEnable()
     {
-        baseClothe = target as BaseCloth;
+        baseElement = target as BaseHair;
     }
 
     /// <summary>
@@ -26,10 +26,11 @@ public class ClotheEditor : Editor
     {
         base.OnInspectorGUI();
 
-        if (baseClothe.icon == null)
+        if (baseElement.icon == null)
             return;
 
-        Texture2D texture = AssetPreview.GetAssetPreview(baseClothe.icon);
+        GUILayout.Space(10f);
+        Texture2D texture = AssetPreview.GetAssetPreview(baseElement.icon);
         GUILayout.Label("", GUILayout.Height(80), GUILayout.Width(80));
         GUI.DrawTexture(GUILayoutUtility.GetLastRect(), texture);
     }

@@ -9,8 +9,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ae29e03d75cc6594b9de7577c3aa2dcb, type: 3}
-  m_Name: Store
+  m_Script: {fileID: 11500000, guid: 4e48436d5f7ed464984ede1dca50955f, type: 3}
+  m_Name: Blacksmith Clothes
   m_EditorClassIdentifier: 
-  avatarSkins: {fileID: 11400000, guid: e5b79438e819f16449fe68b7aa78cbb7, type: 2}
-  buildings: {fileID: 11400000, guid: 933eaaff2f7b4d94cb97e34949a92aae, type: 2}
+  characterClothes:
+  - {fileID: 11400000, guid: 909a1c397b3cd59499d291cbc4f4800a, type: 2}
+  - {fileID: 11400000, guid: b80e33e394059dd419b218c6dcc0c47d, type: 2}

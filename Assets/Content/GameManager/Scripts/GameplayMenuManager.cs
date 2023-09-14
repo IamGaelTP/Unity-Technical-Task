@@ -15,6 +15,8 @@ public class GameplayMenuManager : MonoBehaviour
             pause,
             book
         };
+
+        HideMenus();
     }
 
     private void OnEnable()
@@ -25,11 +27,6 @@ public class GameplayMenuManager : MonoBehaviour
     private void OnDisable()
     {
         BuildableItemPreview.hidePanels -= HideMenus;
-    }
-
-    private void Start()
-    {
-        HideMenus();
     }
 
     private void Update()

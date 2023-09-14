@@ -26,10 +26,10 @@ public class AvatarBaseEditor : Editor
     {
         base.OnInspectorGUI();
 
-        if (baseElement.ICON == null)
+        if (baseElement.icon == null)
             return;
 
-        Texture2D texture = AssetPreview.GetAssetPreview(baseElement.ICON);
+        Texture2D texture = AssetPreview.GetAssetPreview(baseElement.icon);
         GUILayout.Label("", GUILayout.Height(80), GUILayout.Width(80));
         GUI.DrawTexture(GUILayoutUtility.GetLastRect(), texture);
     }

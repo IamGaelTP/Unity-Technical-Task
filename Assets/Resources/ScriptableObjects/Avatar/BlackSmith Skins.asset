@@ -9,8 +9,8 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ae29e03d75cc6594b9de7577c3aa2dcb, type: 3}
-  m_Name: Store
+  m_Script: {fileID: 11500000, guid: 3b10ffc3ce1d34d4ca8485ed08115698, type: 3}
+  m_Name: BlackSmith Skins
   m_EditorClassIdentifier: 
-  avatarSkins: {fileID: 11400000, guid: e5b79438e819f16449fe68b7aa78cbb7, type: 2}
-  buildings: {fileID: 11400000, guid: 933eaaff2f7b4d94cb97e34949a92aae, type: 2}
+  hairs: {fileID: 11400000, guid: 72c0d7c2a499d6e46b107934118d5413, type: 2}
+  clothes: {fileID: 11400000, guid: 150c9cd45e64a9b4f8cf8abeefe221d8, type: 2}

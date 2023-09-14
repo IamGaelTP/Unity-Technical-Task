@@ -11,7 +11,6 @@ public enum ePages
 public enum eStoreFilter
 {
     CLOTHES,
-    PLAYER,
     BUILDINGS
 }
 

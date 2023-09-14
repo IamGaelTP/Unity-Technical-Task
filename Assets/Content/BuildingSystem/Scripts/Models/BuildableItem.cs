@@ -9,4 +9,6 @@ public class BuildableItem : ScriptableObject
     [field: SerializeField] public string Price { get; private set; }
     [field: SerializeField] public TileBase Tile { get; private set; }
     [field: SerializeField] public Sprite PreviewSprite { get; private set; }
+
+    [field: SerializeField] public bool isUnlocked { get; private set; }
 }

@@ -5,6 +5,8 @@ using UnityEngine;
 public class StorePreview : MonoBehaviour
 {
     private List<GameObject> categoryItems = new List<GameObject>();
+    public GameObject skinsPreview;
+    public GameObject buildingsSkinsPreview;
 
     private void OnEnable()
     {
@@ -13,13 +15,25 @@ public class StorePreview : MonoBehaviour
         ItemSlot.onSlotSelected += ResetSlotsDesign;
     }
 
-    private void ResetList()
+    private void ResetList(eStoreFilter filter)
     {
         foreach (var item in categoryItems)
         {
             item.DestroyObject();
         }
         categoryItems.Clear();
+
+        switch (filter)
+        {
+            case eStoreFilter.CLOTHES:
+                skinsPreview.SetActive(true);
+                buildingsSkinsPreview.SetActive(false);
+                break;
+            case eStoreFilter.BUILDINGS:
+                skinsPreview.SetActive(false);
+                buildingsSkinsPreview.SetActive(true);
+                break;
+        }
     }
 
     private void AddToList(GameObject newItem)

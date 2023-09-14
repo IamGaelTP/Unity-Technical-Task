@@ -1,29 +1,20 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-using UnityEngine.UI;
-using TMPro;
 using System;
 
-public class BuildableItemPreview : MonoBehaviour
+public class BuildableItemPreview : StoreItemPreview
 {
     private BuildableItem currentItemSelected;
-
-    public TMP_Text itemName;
-    public TMP_Text itemPrice;
-    public Button itemButton;
 
     public static event Action<BuildableItem, int> onBuildingBought;
     public static event Action hidePanels;
     public static event Action returnCallToSlot;
 
-    private void OnEnable()
+    public override void OnEnable()
     {
+        base.OnEnable();
         BuildableItemSlot.onBuildableSlotSelected += UpdateDesign;
-        itemButton.onClick.AddListener(OnClick);
     }
 
-    private void OnClick()
+    public override void OnClick()
     {
         onBuildingBought?.Invoke(currentItemSelected, 1);
         hidePanels?.Invoke();
@@ -36,10 +27,10 @@ public class BuildableItemPreview : MonoBehaviour
         itemPrice.text = currentItemSelected.Price;
     }
 
-    private void OnDisable()
+    public override void OnDisable()
     {
+        base.OnDisable();
         BuildableItemSlot.onBuildableSlotSelected -= UpdateDesign;
-        itemButton.onClick.RemoveListener(OnClick);
     }
 
 }
