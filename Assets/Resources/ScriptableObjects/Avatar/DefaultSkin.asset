@@ -1,0 +1,17 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f5939d0ee6c8d6544babac0f31cffb6a, type: 3}
+  m_Name: DefaultSkin
+  m_EditorClassIdentifier: 
+  <baseBody>k__BackingField: {fileID: 11400000, guid: bf2cec0011484ec458461f8908a9ad5f, type: 2}
+  <hair>k__BackingField: {fileID: 11400000, guid: bf2cec0011484ec458461f8908a9ad5f, type: 2}
+  <clothes>k__BackingField: {fileID: 11400000, guid: 909a1c397b3cd59499d291cbc4f4800a, type: 2}

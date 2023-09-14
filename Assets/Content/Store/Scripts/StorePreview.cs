@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System;
 
 public class StorePreview : MonoBehaviour
 {
@@ -8,11 +9,24 @@ public class StorePreview : MonoBehaviour
     public GameObject skinsPreview;
     public GameObject buildingsSkinsPreview;
 
+    public static event Action<eStoreFilter> onResetList;
+
     private void OnEnable()
     {
         CategoryItemButton.onNewCategorySelected += ResetList;
         CategoryItemButton.onNewSlotItemInstantiated += AddToList;
         ItemSlot.onSlotSelected += ResetSlotsDesign;
+        AvatarItemPreview.onAvatarSkinBought += ResetAndInstantiateClothesAgain;
+    }
+
+    private void ResetAndInstantiateClothesAgain(AvatarBaseElement element)
+    {
+        foreach (var item in categoryItems)
+        {
+            item.DestroyObject();
+        }
+        categoryItems.Clear();
+        onResetList?.Invoke(eStoreFilter.CLOTHES);
     }
 
     private void ResetList(eStoreFilter filter)

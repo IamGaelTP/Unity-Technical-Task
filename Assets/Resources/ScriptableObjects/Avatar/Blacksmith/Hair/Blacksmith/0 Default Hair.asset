@@ -10,11 +10,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 0cd43df74eed0a9459eedd0a0198ba79, type: 3}
-  m_Name: 1 Green
+  m_Name: 0 Default Hair
   m_EditorClassIdentifier: 
-  <name>k__BackingField: Green Hair
-  <id>k__BackingField: 1
-  <Price>k__BackingField: 1000
-  <prefab>k__BackingField: {fileID: 0}
-  <icon>k__BackingField: {fileID: -843302977, guid: fd212a5a6d902294f929a5cd23314e8b, type: 3}
-  <isUnlocked>k__BackingField: 0
+  <name>k__BackingField: Default
+  <id>k__BackingField: 0
+  <Price>k__BackingField: 0
+  <prefab>k__BackingField: {fileID: 2231157969004690234, guid: b34778065c080034ea15f2bb5be58a84, type: 3}
+  <icon>k__BackingField: {fileID: -523232282, guid: bf72b20b5f8fe0445912a0b194cd60c9, type: 3}
+  <isUnlocked>k__BackingField: 1

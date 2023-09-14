@@ -32,6 +32,7 @@ public class CategoryItemButton : MonoBehaviour
 
     private void OnEnable()
     {
+        StorePreview.onResetList += InstantiateClothes;
         button.onClick.AddListener(OnClick);
     }
 
@@ -65,6 +66,14 @@ public class CategoryItemButton : MonoBehaviour
     {
         buttonImage.sprite = buttonDesign.selected;
         lastState = buttonDesign.selected;
+    }
+
+    private void InstantiateClothes(eStoreFilter filter)
+    {
+        if(type == filter)
+        {
+            InstantiateSlots();
+        }
     }
 
     private void InstantiateSlots()
@@ -112,6 +121,7 @@ public class CategoryItemButton : MonoBehaviour
     private void OnDisable()
     {
         button.onClick.RemoveListener(OnClick);
+        StorePreview.onResetList -= InstantiateClothes;
     }
 
 }

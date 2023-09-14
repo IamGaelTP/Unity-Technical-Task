@@ -14,14 +14,18 @@ public class AvatarManager : MonoBehaviour
 
     private List<GameObject> itemsAvailable = new List<GameObject>();
 
-    private void Start()
+    private void OnEnable()
     {
+        ItemSlot.onSlotSelected += ResetSlotsDesign;
+        AvatarItemPreview.onAvatarSkinBought += ResetList;
         InstantiateSlots();
     }
 
-    private void OnEnable()
+    private void OnDisable()
     {
-        AvatarItemPreview.onAvatarSkinBought += ResetList;
+        ItemSlot.onSlotSelected -= ResetSlotsDesign;
+        AvatarItemPreview.onAvatarSkinBought -= ResetList;
+        ResetList(null);
     }
 
     private void InstantiateSlots()
@@ -30,12 +34,9 @@ public class AvatarManager : MonoBehaviour
         {
             GameObject obj = Instantiate(slotItemPrefab, slotParent.transform);
             obj.GetComponent<AvatarItemSlot>().item = item;
+            obj.GetComponent<AvatarItemSlot>().isStoreSlot = false;
+            obj.GetComponent<AvatarItemSlot>().type = eAvatarElement.CLOTHES;
             obj.GetComponent<AvatarItemSlot>().SetDesign();
-
-            if(!item.isUnlocked)
-            {
-                obj.GetComponent<AvatarItemSlot>().CheckSlotUnlocked();
-            }
 
             AddToList(obj);
         }
@@ -44,14 +45,19 @@ public class AvatarManager : MonoBehaviour
         {
             GameObject obj = Instantiate(slotItemPrefab, slotParent.transform);
             obj.GetComponent<AvatarItemSlot>().item = item;
+            obj.GetComponent<AvatarItemSlot>().isStoreSlot = false;
+            obj.GetComponent<AvatarItemSlot>().type = eAvatarElement.HAIR;
             obj.GetComponent<AvatarItemSlot>().SetDesign();
 
-            if (!item.isUnlocked)
-            {
-                obj.GetComponent<AvatarItemSlot>().CheckSlotUnlocked();
-            }
-
             AddToList(obj);
+        }
+    }
+
+    private void ResetSlotsDesign()
+    {
+        foreach (var item in itemsAvailable)
+        {
+            item.GetComponent<AvatarItemSlot>().ResetToNormalDesign();
         }
     }
 
@@ -62,7 +68,6 @@ public class AvatarManager : MonoBehaviour
             item.DestroyObject();
         }
         itemsAvailable.Clear();
-        InstantiateSlots();
     }
 
     private void AddToList(GameObject newItem)

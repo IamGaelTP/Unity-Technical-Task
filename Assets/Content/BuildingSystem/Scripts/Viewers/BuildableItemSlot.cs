@@ -10,15 +10,9 @@ public class BuildableItemSlot : ItemSlot
 
     public static event Action<BuildableItem> onBuildableSlotSelected;
 
-    private void Awake()
-    {
-        button = GetComponent<Button>();
-        buttonImage.sprite = buttonDesign.normal;
-        lastState = buttonImage.sprite;
-    }
-
     public override void OnClick()
     {
+        base.OnClick();
         if(item != null)
         {
             isSelected = true;

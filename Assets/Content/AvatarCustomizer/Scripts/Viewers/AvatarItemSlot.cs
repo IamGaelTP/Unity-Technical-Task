@@ -8,30 +8,41 @@ public class AvatarItemSlot : ItemSlot
 {
     public AvatarBaseElement item { get; set; }
 
-    public static event Action<AvatarBaseElement, bool> onAvatarSlotSelected;
+    public static event Action<AvatarBaseElement, eAvatarElement, bool> onAvatarSlotSelected;
 
+    public eAvatarElement type { get; set; }
     public bool isStoreSlot { get; set; }
 
-    private void Awake()
+    public override void Start()
     {
-        button = GetComponent<Button>();
-        buttonImage.sprite = buttonDesign.normal;
-        lastState = buttonImage.sprite;
-        isStoreSlot = false;
+        base.Start();
+    }
+
+    public override void OnEnable()
+    {
+        base.OnEnable();
+        AvatarItemPreview.onAvatarSkinBought += UnlockItem;
+    }
+
+    public override void OnDisable()
+    {
+        base.OnDisable(); 
+        AvatarItemPreview.onAvatarSkinBought -= UnlockItem;
     }
 
     public override void OnClick()
     {
+        base.OnClick();
         if (item != null)
         {
             isSelected = true;
             if (isStoreSlot)
             {
-                onAvatarSlotSelected?.Invoke(item, true);
+                onAvatarSlotSelected?.Invoke(item, type, true);
             }
             else
             {
-                onAvatarSlotSelected?.Invoke(item, false);
+                onAvatarSlotSelected?.Invoke(item, type, false);
             }
             OnSelection();
         }
@@ -46,17 +57,31 @@ public class AvatarItemSlot : ItemSlot
 
     public void CheckSlotUnlocked()
     {
-        if(item.isUnlocked)
+        if(item != null)
         {
-            button.interactable = true;
+            if(isStoreSlot)
+            {
+                button.interactable = true;
+            }
+            else
+            {
+                if (item.isUnlocked)
+                {
+                    button.interactable = true;
+                }
+                else
+                {
+                    button.interactable = false;
+                }
+            }
         }
-        else if(!item.isUnlocked && isStoreSlot)
+    }
+
+    private void UnlockItem(AvatarBaseElement item)
+    {
+        if(this.item.id == item.id)
         {
-            button.interactable = true;
-        }
-        else
-        {
-            button.interactable = false;
+            item.UnlockItem();
         }
     }
 }

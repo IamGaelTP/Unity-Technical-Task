@@ -16,12 +16,26 @@ public class ItemSlot : MonoBehaviour
 
     public static event Action onSlotSelected;
 
-    private void OnEnable()
+    public virtual void OnEnable()
     {
         button.onClick.AddListener(OnClick);
     }
 
-    public virtual void OnClick() { }
+    private void Awake()
+    {
+        button = GetComponent<Button>();
+    }
+
+    public virtual void Start()
+    {
+        buttonImage.sprite = buttonDesign.normal;
+        lastState = buttonImage.sprite;
+    }
+
+    public virtual void OnClick() 
+    {
+        onSlotSelected?.Invoke();
+    }
 
     public virtual void SetDesign()
     {
@@ -52,7 +66,7 @@ public class ItemSlot : MonoBehaviour
         buttonImage.sprite = buttonDesign.selected;
         lastState = buttonDesign.selected;
     }
-    private void OnDisable()
+    public virtual void OnDisable()
     {
         button.onClick.RemoveListener(OnClick);
     }

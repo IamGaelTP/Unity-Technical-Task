@@ -5,5 +5,6 @@ using UnityEngine;
 [System.Serializable]
 public class BaseCloth : AvatarBaseElement
 {
-    // CUSTOM DATA
+    private eAvatarElement type = eAvatarElement.CLOTHES;
+    public eAvatarElement TYPE => type;
 }

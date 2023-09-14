@@ -5,7 +5,8 @@ using UnityEngine;
 public enum ePages
 {
     INVENTORY,
-    STORE
+    STORE,
+    AVATAR
 }
 
 public enum eStoreFilter
@@ -19,6 +20,25 @@ public class BookManager : MonoBehaviour
     public GameObject[] pages;
     public ePages currentPage { get; private set; }
 
+    private void OnEnable()
+    {
+        BookPageBtn.onBookPageSelected += SetNewPage;
+    }
+
+    private void OnDisable()
+    {
+        BookPageBtn.onBookPageSelected -= SetNewPage;
+    }
+
+    private void Start()
+    {
+        foreach (var page in pages)
+        {
+            page.SetActive(false);
+        }
+        pages[0].SetActive(true);
+    }
+
     private void SetNewPage(ePages newPage)
     {
         currentPage = newPage;
@@ -29,6 +49,9 @@ public class BookManager : MonoBehaviour
                 break;
             case ePages.STORE:
                 ShowPage(1);
+                break;
+            case ePages.AVATAR:
+                ShowPage(2);
                 break;
             default:
                 break;

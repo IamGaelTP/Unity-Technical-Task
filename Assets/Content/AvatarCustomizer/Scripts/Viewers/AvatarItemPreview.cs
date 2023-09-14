@@ -1,4 +1,4 @@
-using System;
+                                                        using System;
 
 public class AvatarItemPreview : StoreItemPreview
 {
@@ -16,11 +16,14 @@ public class AvatarItemPreview : StoreItemPreview
 
     public override void OnClick()
     {
-        onAvatarSkinBought?.Invoke(currentItemSelected);
-        hidePanels?.Invoke();
+        if(currentItemSelected != null)
+        {
+            onAvatarSkinBought?.Invoke(currentItemSelected);
+        }
+        //hidePanels?.Invoke();
     }
 
-    private void UpdateDesign(AvatarBaseElement itemSelected, bool isStoreSlot)
+    private void UpdateDesign(AvatarBaseElement itemSelected, eAvatarElement type, bool isStoreSlot)
     {
         if(isStoreSlot)
         {

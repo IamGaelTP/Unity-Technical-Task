@@ -2,6 +2,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+public enum eAvatarElement
+{
+    BASE,
+    HAIR,
+    CLOTHES
+}
+
 [System.Serializable]
 public class AvatarBaseElement : ScriptableObject
 {
@@ -28,6 +35,8 @@ public class AvatarBaseElement : ScriptableObject
     [field: SerializeField] public Sprite icon { get; private set; }
 
     [field: SerializeField] public bool isUnlocked { get; private set; }
+
+    private AvatarBaseElement defaultValue;
 
     public void UnlockItem()
     {

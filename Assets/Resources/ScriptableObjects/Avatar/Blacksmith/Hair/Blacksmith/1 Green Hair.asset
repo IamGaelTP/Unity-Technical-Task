@@ -9,12 +9,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 129977b2a8e15374993871c26ba2ef8e, type: 3}
-  m_Name: 1 Green
+  m_Script: {fileID: 11500000, guid: 0cd43df74eed0a9459eedd0a0198ba79, type: 3}
+  m_Name: 1 Green Hair
   m_EditorClassIdentifier: 
-  <name>k__BackingField: Green Shirt
+  <name>k__BackingField: Green Hair
   <id>k__BackingField: 1
   <Price>k__BackingField: 1000
-  <prefab>k__BackingField: {fileID: 0}
-  <icon>k__BackingField: {fileID: -69470619, guid: 5f14725addc8dd64fa4438c0258d9124, type: 3}
+  <prefab>k__BackingField: {fileID: 6253214318181009830, guid: c026c7e494c4d5a4081b7168dc3fc173, type: 3}
+  <icon>k__BackingField: {fileID: -843302977, guid: fd212a5a6d902294f929a5cd23314e8b, type: 3}
   <isUnlocked>k__BackingField: 0
