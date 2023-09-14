@@ -5,7 +5,7 @@ using UnityEngine;
 [RequireComponent(typeof(PlayerController))]
 public class BuildingPlacer : MonoBehaviour
 {
-    public BuildableItem ActiveBuildable { get; private set; }
+    private BuildableItem ActiveBuildable { get; set; }
     [SerializeField] private float maxBuildingDistance = 3f;
     [SerializeField] private ConstructionLayer constructionLayer;
     [SerializeField] private PreviewLayer previewLayer;
@@ -30,19 +30,32 @@ public class BuildingPlacer : MonoBehaviour
 
     private void ActiveBuildMode(BuildableItem item, int quantity)
     {
-        ActiveBuildable = item;
-        buildsLeft = quantity;
+        if(GameManager.INSTANCE.currentGameState == eGameStates.GAME_HOUSE)
+        {
+            SetActiveBuildable(item);
+            buildsLeft = quantity;
+        }
+        else
+        {
+            // SHOW ALERT: YOU CANNOT BUILD HERE. YOUR ITEM WAS ADDED TO YOUR ONVENTORY.
+        }
     }
 
     private void Update()
     {
         if (!isMouseWithinBuildableRange() || ActiveBuildable == null)
         {
-            previewLayer.ClearPreview();
+            if(previewLayer != null)
+            {
+                previewLayer.ClearPreview();
+            }
             return;
         }
 
-        previewLayer.ShowPreview(ActiveBuildable, controller.pointerDirection, constructionLayer.IsEmpty(controller.pointerDirection));
+        if(previewLayer != null)
+        {
+            previewLayer.ShowPreview(ActiveBuildable, controller.pointerDirection, constructionLayer.IsEmpty(controller.pointerDirection));
+        }
 
         if(controller.IsMouseButtonPressed(eMouseButton.LEFT) && ActiveBuildable != null && constructionLayer != null && constructionLayer.IsEmpty(controller.pointerDirection))
         {

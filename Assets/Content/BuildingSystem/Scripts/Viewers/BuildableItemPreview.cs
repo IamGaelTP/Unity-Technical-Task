@@ -34,7 +34,7 @@ public class BuildableItemPreview : StoreItemPreview
     {
         currentItemSelected = itemSelected;
         itemName.text = currentItemSelected.Name;
-        itemPrice.text = currentItemSelected.Price.ToString(); ;
+        itemPrice.text = currentItemSelected.Price.ToString();
     }
 
     public override void OnDisable()

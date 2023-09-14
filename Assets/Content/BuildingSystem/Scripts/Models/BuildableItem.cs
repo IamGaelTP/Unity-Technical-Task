@@ -11,4 +11,9 @@ public class BuildableItem : ScriptableObject
     [field: SerializeField] public Sprite PreviewSprite { get; private set; }
 
     [field: SerializeField] public bool isUnlocked { get; private set; }
+
+    public void UnlockBuildable()
+    {
+        isUnlocked = true;
+    }
 }
