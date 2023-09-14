@@ -21,11 +21,13 @@ public class GameplayMenuManager : MonoBehaviour
 
     private void OnEnable()
     {
+        ExtensionMethodsMono.onHideObject += HideMenus;
         BuildableItemPreview.hidePanels += HideMenus;
     }
 
     private void OnDisable()
     {
+        ExtensionMethodsMono.onHideObject -= HideMenus;
         BuildableItemPreview.hidePanels -= HideMenus;
     }
 
@@ -33,12 +35,23 @@ public class GameplayMenuManager : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Q))
         {
-            BookVisibility(true);
+            if(book.activeSelf)
+            {
+                HideMenus();
+                BookVisibility(false);
+            }
+            else
+            {
+                HideMenus();
+                BookVisibility(true);
+            }
         }
     }
 
     private void HideMenus()
     {
+        GameManager.INSTANCE.PauseGame(false);
+
         foreach (var item in panels)
         {
             item.SetActive(false);
@@ -47,14 +60,30 @@ public class GameplayMenuManager : MonoBehaviour
 
     public void PauseVisibility(bool isActive)
     {
-        HideMenus();
-        pause.SetActive(isActive);
+        pause.SetActive(isActive); 
+        
+        if (isActive)
+        {
+            GameManager.INSTANCE.PauseGame(true);
+        }
+        else
+        {
+            GameManager.INSTANCE.PauseGame(false);
+        }
     }
 
     public void BookVisibility(bool isActive)
     {
-        HideMenus();
         book.SetActive(isActive);
+
+        if(isActive)
+        {
+            GameManager.INSTANCE.PauseGame(true);
+        }
+        else
+        {
+            GameManager.INSTANCE.PauseGame(false);
+        }
     }
 
 }

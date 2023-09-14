@@ -78,6 +78,9 @@ public class AvatarCustomizer : MonoBehaviour
         }
 
         onAvatarUpdated?.Invoke(currentSkin);
+
+        // IN A GOOD ARCHITECTURE, THIS ACTIONS WILL BE CALLEN ON SAVE OR CANCEL BUTTONS
+        ConfirmSave();
     }
 
     private void ConfirmSave()

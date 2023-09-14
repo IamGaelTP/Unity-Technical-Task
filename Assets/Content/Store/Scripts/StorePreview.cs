@@ -8,6 +8,7 @@ public class StorePreview : MonoBehaviour
     private List<GameObject> categoryItems = new List<GameObject>();
     public GameObject skinsPreview;
     public GameObject buildingsSkinsPreview;
+    public GameObject[] categoryButtons;
 
     public static event Action<eStoreFilter> onResetList;
 
@@ -31,6 +32,7 @@ public class StorePreview : MonoBehaviour
 
     private void ResetList(eStoreFilter filter)
     {
+        ResetCategoryDesign();
         foreach (var item in categoryItems)
         {
             item.DestroyObject();
@@ -47,6 +49,14 @@ public class StorePreview : MonoBehaviour
                 skinsPreview.SetActive(false);
                 buildingsSkinsPreview.SetActive(true);
                 break;
+        }
+    }
+
+    private void ResetCategoryDesign()
+    {
+        foreach (var item in categoryButtons)
+        {
+            item.GetComponent<CategoryItemButton>().ResetToNormalDesign();
         }
     }
 

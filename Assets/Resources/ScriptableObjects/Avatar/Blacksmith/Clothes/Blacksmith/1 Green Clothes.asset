@@ -12,7 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 129977b2a8e15374993871c26ba2ef8e, type: 3}
   m_Name: 1 Green Clothes
   m_EditorClassIdentifier: 
-  <name>k__BackingField: Green Shirt
   <id>k__BackingField: 1
   <Price>k__BackingField: 1000
   <prefab>k__BackingField: {fileID: 4579951881463248693, guid: cae7f2a4fea65544fb053d3f9afe4001, type: 3}

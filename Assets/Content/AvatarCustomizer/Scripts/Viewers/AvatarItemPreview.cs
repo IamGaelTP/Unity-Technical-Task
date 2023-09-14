@@ -4,6 +4,7 @@ public class AvatarItemPreview : StoreItemPreview
 {
     private AvatarBaseElement currentItemSelected;
 
+    public static event Action<AvatarBaseElement> onWantToBuy;
     public static event Action<AvatarBaseElement> onAvatarSkinBought;
     public static event Action hidePanels;
     public static event Action returnCallToSlot;
@@ -11,6 +12,7 @@ public class AvatarItemPreview : StoreItemPreview
     public override void OnEnable()
     {
         base.OnEnable();
+        CurrencyManager.onItemBought += OnBought;
         AvatarItemSlot.onAvatarSlotSelected += UpdateDesign;
     }
 
@@ -18,8 +20,13 @@ public class AvatarItemPreview : StoreItemPreview
     {
         if(currentItemSelected != null)
         {
-            onAvatarSkinBought?.Invoke(currentItemSelected);
+            onWantToBuy?.Invoke(currentItemSelected);
         }
+    }
+
+    private void OnBought()
+    {
+        onAvatarSkinBought?.Invoke(currentItemSelected);
         //hidePanels?.Invoke();
     }
 
@@ -29,13 +36,14 @@ public class AvatarItemPreview : StoreItemPreview
         {
             currentItemSelected = itemSelected;
             itemName.text = currentItemSelected.name;
-            itemPrice.text = currentItemSelected.Price;
+            itemPrice.text = currentItemSelected.Price.ToString();
         }
     }
 
     public override void OnDisable()
     {
-        base.OnDisable();
+        base.OnDisable(); 
+        CurrencyManager.onItemBought -= OnBought;
         AvatarItemSlot.onAvatarSlotSelected -= UpdateDesign;
     }
 }

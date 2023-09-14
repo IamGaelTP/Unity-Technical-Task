@@ -1,18 +1,27 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
+using TMPro;
 
 public class CurrencyViewer : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    public Image icon;
+    public TMP_Text value;
+
+    private void OnEnable()
     {
-        
+        CurrencyManager.onCurrencyUpdated += UpdateDesign;
     }
 
-    // Update is called once per frame
-    void Update()
+    private void OnDisable()
     {
-        
+        CurrencyManager.onCurrencyUpdated -= UpdateDesign;
+    }
+
+    private void UpdateDesign(Currency currency)
+    {
+        icon.sprite = currency.icon;
+        value.text = currency.currentValue.ToString(); ;
     }
 }

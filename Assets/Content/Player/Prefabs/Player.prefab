@@ -85,6 +85,7 @@ GameObject:
   - component: {fileID: 4765465104762704239}
   - component: {fileID: 4765465104762704232}
   - component: {fileID: 4765465104762704233}
+  - component: {fileID: 3021633179275446042}
   - component: {fileID: 4765465104762704238}
   m_Layer: 3
   m_Name: Player
@@ -179,8 +180,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   <defaultSkin>k__BackingField: {fileID: 11400000, guid: 90fa537b06f69d746b2490c8498a7f5d, type: 2}
-  <currentSkin>k__BackingField: {fileID: 11400000, guid: 3962476d0bccc6f45820ecd6ebae385f, type: 2}
   <basePlayer>k__BackingField: {fileID: 4765465104686065503}
+--- !u!114 &3021633179275446042
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4765465104762704273}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 87a3bee640b7bdd4e974a2d3172a8c75, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  <baseCurrency>k__BackingField: {fileID: 11400000, guid: 2bddc7c1f74b74c4c8d8df1dd8e98fcb, type: 2}
 --- !u!50 &4765465104762704238
 Rigidbody2D:
   serializedVersion: 4

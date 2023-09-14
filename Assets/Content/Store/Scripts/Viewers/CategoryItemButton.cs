@@ -38,6 +38,9 @@ public class CategoryItemButton : MonoBehaviour
 
     private void Start()
     {
+        buttonImage.sprite = buttonDesign.normal;
+        lastState = buttonImage.sprite;
+
         if (type == eStoreFilter.CLOTHES)
         {
             // Simulate Click
@@ -50,6 +53,7 @@ public class CategoryItemButton : MonoBehaviour
     {
         onNewCategorySelected?.Invoke(type);
         InstantiateSlots();
+        OnSelection();
     }
 
     public void OnNormal()
@@ -66,6 +70,12 @@ public class CategoryItemButton : MonoBehaviour
     {
         buttonImage.sprite = buttonDesign.selected;
         lastState = buttonDesign.selected;
+    }
+
+    public void ResetToNormalDesign()
+    {
+        buttonImage.sprite = buttonDesign.normal;
+        lastState = buttonDesign.normal;
     }
 
     private void InstantiateClothes(eStoreFilter filter)
