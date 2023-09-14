@@ -7,6 +7,6 @@ public class CheckCanMove : PlayerDecision
 {
     public override bool Decide(PlayerStateMachine stateMachine)
     {
-        return  GameManager.INSTANCE.IS_GAME_PAUSED || GameManager.INSTANCE.IS_ON_TUTORIAL ? false : true;
+        return  GameManager.INSTANCE.isGamePaused || GameManager.INSTANCE.isOnTutorial ? false : true;
     }
 }

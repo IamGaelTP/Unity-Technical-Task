@@ -9,7 +9,7 @@ public class PreviewLayer : TilemapLayer
         var coords = tilemap.WorldToCell(worldCoords);
         previewRenderer.enabled = true;
         previewRenderer.transform.position = tilemap.CellToWorld(coords) + tilemap.cellSize / 2;
-        previewRenderer.sprite = item.previewSprite;
+        previewRenderer.sprite = item.PreviewSprite;
         previewRenderer.color = isValid ? new Color(0, 1, 0, 0.5f) : new Color(1, 0, 0, 0.5f);
     }
 

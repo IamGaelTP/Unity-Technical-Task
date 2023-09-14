@@ -15,14 +15,9 @@ public class GameManager : MonoBehaviour
     private static GameManager instance;
     public static GameManager INSTANCE { get { return instance; } }
 
-    public bool IS_GAME_PAUSED => isGamePaused;
-    private bool isGamePaused = false;
-
-    public bool IS_ON_TUTORIAL => isOnTutorial;
-    private bool isOnTutorial = false;
-
-    public eGameStates CURRENT_GAME_STATE => currentGameState;
-    private eGameStates currentGameState;
+    public bool isGamePaused { get; private set; }
+    public  bool isOnTutorial { get; private set; }
+    public eGameStates currentGameState { get; private set; }
 
 
     private void Awake()
