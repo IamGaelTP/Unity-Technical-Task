@@ -13,6 +13,8 @@ public class AvatarItemSlot : ItemSlot
     public eAvatarElement type { get; set; }
     public bool isStoreSlot { get; set; }
 
+    public bool isInventorySlot { get; set; }
+
     public override void Start()
     {
         base.Start();

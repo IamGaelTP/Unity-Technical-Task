@@ -15,7 +15,6 @@ public class AvatarCustomizer : MonoBehaviour
 
     private GameObject currentBase, currentHair, currentClothes;
 
-
     private void Awake()
     {
         currentSkin = Instantiate(defaultSkin);
@@ -38,6 +37,7 @@ public class AvatarCustomizer : MonoBehaviour
     private void OnEnable()
     {
         AvatarItemSlot.onAvatarSlotSelected += InstantiateSkin;
+        InventoryItemPreview.onAvatarSkinUse += InstantiateSkin;
     }
 
     private void OnDisable()

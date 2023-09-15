@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using System;
 
 public enum eMouseButton
 {
@@ -23,6 +24,14 @@ public class PlayerController : MonoBehaviour
     public bool isLeftMouseButtonPressed { get; private set; }
     public bool isRightMouseButtonPressed { get; private set; }
 
+    public bool isOnCinematic { get; private set;}
+
+    public bool isOnDialogue { get; private set; }
+
+    public bool isOnInteraction { get; private set; }
+
+    public static event Action<bool> onInteraction;
+
 
     private void Awake()
     {
@@ -35,21 +44,51 @@ public class PlayerController : MonoBehaviour
         input.PlayerInput.Movement.canceled += DisableMovement;
 
         input.PlayerInput.PointerPosition.performed += GetPointerPosition;
+
         input.PlayerInput.PerformAction.performed += OnPerformActionPerformed;
         input.PlayerInput.PerformAction.canceled += OnPerformActionCancelled;
         input.PlayerInput.CancelAction.performed += OnCancelActionPerformed;
         input.PlayerInput.CancelAction.canceled += OnCancelActionCancelled;
+
+        input.PlayerInput.Interact.performed += OnInteractionPerformed;
+        input.PlayerInput.Interact.canceled += OnInteractionCancelled;
+
+        CinematicController.onCutscene += CinematicStatus;
     }
     void OnDisable()
     {
         input.PlayerInput.Movement.performed -= EnableMovement;
         input.PlayerInput.Movement.canceled -= DisableMovement;
+
         input.PlayerInput.PointerPosition.performed -= GetPointerPosition;
+
         input.PlayerInput.PerformAction.performed -= OnPerformActionPerformed;
         input.PlayerInput.PerformAction.canceled -= OnPerformActionCancelled;
         input.PlayerInput.CancelAction.performed -= OnCancelActionPerformed;
-        input.PlayerInput.CancelAction.canceled -= OnCancelActionCancelled;
+        input.PlayerInput.CancelAction.canceled -= OnCancelActionCancelled; 
+
+        input.PlayerInput.Interact.performed -= OnInteractionPerformed;
+        input.PlayerInput.Interact.canceled -= OnInteractionCancelled;
         input.PlayerInput.Disable();
+    }
+
+    private void CinematicStatus(bool isOn)
+    {
+        isOnCinematic = isOn;
+    }
+
+    private void DialogueStatus(bool isOn)
+    {
+        isOnDialogue = isOn;
+    }
+    private void OnInteractionPerformed(InputAction.CallbackContext context)
+    {
+        isOnInteraction = true;
+        onInteraction?.Invoke(true);
+    }
+    private void OnInteractionCancelled(InputAction.CallbackContext context)
+    {
+        isOnInteraction = false;
     }
 
     private void EnableMovement(InputAction.CallbackContext context)

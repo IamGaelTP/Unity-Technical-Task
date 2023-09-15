@@ -1,0 +1,28 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 349a176fe09d5fb418cf77ac37386b8a, type: 3}
+  m_Name: Alvin_GiveBuidable
+  m_EditorClassIdentifier: 
+  <speakerLeft>k__BackingField: {fileID: 11400000, guid: 6dad648e7c73a654baaa8b4077b48964, type: 2}
+  <speakerRight>k__BackingField: {fileID: 11400000, guid: 92072737c9b217b41b32c9cefbd5856f, type: 2}
+  <lines>k__BackingField:
+  - character: {fileID: 11400000, guid: 92072737c9b217b41b32c9cefbd5856f, type: 2}
+    text: Hello friend, are you new here? I haven't seen you before.
+  - character: {fileID: 11400000, guid: 6dad648e7c73a654baaa8b4077b48964, type: 2}
+    text: No, I live upstairs but I don't go out much.
+  - character: {fileID: 11400000, guid: 92072737c9b217b41b32c9cefbd5856f, type: 2}
+    text: Oh I see, aren't you interested in buying a rug for your house? It's 3x2
+      size. 200$?
+  - character: {fileID: 11400000, guid: 6dad648e7c73a654baaa8b4077b48964, type: 2}
+    text: Sounds good. I just need a rug for my bedroom.
+  - character: {fileID: 11400000, guid: 92072737c9b217b41b32c9cefbd5856f, type: 2}
+    text: "Done, I've already left it in your inventory. \nThank you!"

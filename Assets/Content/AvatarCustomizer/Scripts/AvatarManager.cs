@@ -68,6 +68,11 @@ public class AvatarManager : MonoBehaviour
             item.DestroyObject();
         }
         itemsAvailable.Clear();
+
+        if(elementUnlocked != null)
+        {
+            InstantiateSlots();
+        }
     }
 
     private void AddToList(GameObject newItem)

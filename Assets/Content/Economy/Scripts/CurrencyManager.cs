@@ -21,12 +21,14 @@ public class CurrencyManager : MonoBehaviour
     {
         BuildableItemPreview.onWantToBuy += BuyBuildable;
         AvatarItemPreview.onWantToBuy += BuyAvatarItem;
+        InventoryItemPreview.onSellItem += SellItem;
     }
 
     private void OnDisable()
     {
         BuildableItemPreview.onWantToBuy -= BuyBuildable;
         AvatarItemPreview.onWantToBuy -= BuyAvatarItem;
+        InventoryItemPreview.onSellItem -= SellItem;
     }
 
     private void BuyBuildable(BuildableItem item , int quantity)
@@ -47,6 +49,12 @@ public class CurrencyManager : MonoBehaviour
             onCurrencyUpdated?.Invoke(currency);
             onItemBought.Invoke();
         }
+    }
+
+    private void SellItem(int price)
+    {
+        currency.CurrentValue += price;
+        onCurrencyUpdated?.Invoke(currency);
     }
 
     private bool CheckHaveEnoughCurrency(int itemPrice)

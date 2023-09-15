@@ -45,13 +45,13 @@ public class BookManager : MonoBehaviour
         switch (currentPage)
         {
             case ePages.INVENTORY:
-                ShowPage(0);
-                break;
-            case ePages.STORE:
                 ShowPage(1);
                 break;
-            case ePages.AVATAR:
+            case ePages.STORE:
                 ShowPage(2);
+                break;
+            case ePages.AVATAR:
+                ShowPage(0);
                 break;
             default:
                 break;

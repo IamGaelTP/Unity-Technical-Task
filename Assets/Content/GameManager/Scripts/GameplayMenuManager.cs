@@ -23,12 +23,14 @@ public class GameplayMenuManager : MonoBehaviour
     {
         ExtensionMethodsMono.onHideObject += HideMenus;
         BuildableItemPreview.hidePanels += HideMenus;
+        InventoryItemPreview.hidePanels += HideMenus;
     }
 
     private void OnDisable()
     {
         ExtensionMethodsMono.onHideObject -= HideMenus;
         BuildableItemPreview.hidePanels -= HideMenus;
+        InventoryItemPreview.hidePanels -= HideMenus;
     }
 
     private void Update()

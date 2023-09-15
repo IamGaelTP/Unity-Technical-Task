@@ -12,8 +12,15 @@ public class BuildableItem : ScriptableObject
 
     [field: SerializeField] public bool isUnlocked { get; private set; }
 
+    [field: SerializeField] public eBuildingLayer layer { get; private set; }
+
     public void UnlockBuildable()
     {
         isUnlocked = true;
+    }
+    public void LockItem()
+    {
+        isUnlocked = false;
+
     }
 }

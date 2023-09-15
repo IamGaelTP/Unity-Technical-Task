@@ -43,4 +43,9 @@ public class AvatarBaseElement : ScriptableObject
         isUnlocked = true;
     }
 
+    public void LockItem()
+    {
+        isUnlocked = false;
+    }
+
 }

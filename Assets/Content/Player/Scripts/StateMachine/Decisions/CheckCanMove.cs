@@ -7,6 +7,8 @@ public class CheckCanMove : PlayerDecision
 {
     public override bool Decide(PlayerStateMachine stateMachine)
     {
-        return  GameManager.INSTANCE.isGamePaused || GameManager.INSTANCE.isOnTutorial ? false : true;
+        return  GameManager.INSTANCE.isGamePaused || GameManager.INSTANCE.isOnTutorial || 
+            stateMachine.GetComponent<PlayerController>().isOnCinematic ||
+            stateMachine.GetComponent<PlayerController>().isOnDialogue ? false : true;
     }
 }

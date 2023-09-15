@@ -27,7 +27,15 @@ public class AvatarItemPreview : StoreItemPreview
     private void OnBought()
     {
         onAvatarSkinBought?.Invoke(currentItemSelected);
+        ResetDesign();
         //hidePanels?.Invoke();
+    }
+
+    private void ResetDesign()
+    {
+        currentItemSelected = null;
+        itemName.text = "??????";
+        itemPrice.text = "???";
     }
 
     private void UpdateDesign(AvatarBaseElement itemSelected, eAvatarElement type, bool isStoreSlot)
