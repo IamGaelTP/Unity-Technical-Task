@@ -1,0 +1,17 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4c86a8aebc83982408684e31dc25f241, type: 3}
+  m_Name: WalkToIdle
+  m_EditorClassIdentifier: 
+  decision: {fileID: 11400000, guid: 2da91aec4dec4514c83b9afa56d8c6e1, type: 2}
+  TrueState: {fileID: 11400000, guid: 9144800a1506f3045a4cfd7f7384bee9, type: 2}
+  FalseState: {fileID: 11400000, guid: 82dce3b7f679d5d45b7faf83cb8a5baf, type: 2}

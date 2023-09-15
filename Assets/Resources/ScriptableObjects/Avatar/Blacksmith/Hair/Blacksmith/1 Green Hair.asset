@@ -1,0 +1,20 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0cd43df74eed0a9459eedd0a0198ba79, type: 3}
+  m_Name: 1 Green Hair
+  m_EditorClassIdentifier: 
+  <name>k__BackingField: Green Hair
+  <id>k__BackingField: 1
+  <Price>k__BackingField: 1000
+  <prefab>k__BackingField: {fileID: 6253214318181009830, guid: c026c7e494c4d5a4081b7168dc3fc173, type: 3}
+  <icon>k__BackingField: {fileID: -843302977, guid: fd212a5a6d902294f929a5cd23314e8b, type: 3}
+  <isUnlocked>k__BackingField: 0
