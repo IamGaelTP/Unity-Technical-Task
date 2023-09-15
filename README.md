@@ -18,8 +18,10 @@ I have felt comfortable with the selection process.
 The first interview went well, then all the communication has been excellent with Marina. I really want to congratulate her; she is very attentive.
 
 For this technical test, I wanted to challenge myself and show them more of what I can do because at a certain point I saw the task as something simple, so I wanted to make it more complex, based on the most important thing that was to make a store with buying and selling objects to use later.
+
 Also, I saw that you use Insightful to track your work and I decided to learn it and use it for this project.
 In total I worked 3 days of what would be a full-time position of 8 hours to complete this work which in my opinion, I did something complex in that time.
+
 I am very interested in the Little Sim World game and if that is the project I would be working on, I have no problem although in general, whatever it is, I am fine.
 
 
